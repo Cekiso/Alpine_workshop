@@ -14,90 +14,129 @@
     <div x-data="{ title: 'Welcome to my AlpineJS project' }">
         <h1 x-text="title">
         </h1>
-        <table>
-            <div x-data="{ title: '1.Changing text' }">
+    </div>
+    <div class="row">
+        <div class="col-2-sm page center">
+            <div x-data=" { title: '1.Changing text' } ">
                 <h2 x-text="title"></h2>
-                <div x-data="{ title: 'Hello Alpine' }">
-                    <p x-text="title"></p>
-                    <button @click="title='Alpine Rocks!'">click me</button>
+                <div x-data="{ code: 'So here am having a data variable called title, and i am rendering the text out in a paragraph element using the x-text attribute.' } ">
+                    <h3 x-text="code ">
+                    </h3>
+
+                    <div x-data="{ title: 'Hello Alpine' } ">
+                        <p x-text="title"></p>
+                        <button @click="title='Alpine Rocks!' ">click me</button>
+                    </div>
                 </div>
             </div>
 
-            <div x-data="{ title: '2.Creating a counter componet' }">
-                <h2 x-text="title"></h2>
-                <div x-data="{ count: 1 }">
-                    <p x-text="count"></p>
-                    <button @click="count++">Count Up</button>
-                    <button @click="count--">Count Down</button>
+
+
+            <div x-data="{ title: '2.Creating a counter componet' } ">
+                <h2 x-text="title "></h2>
+                <div x-data="{ code: 'A button that will increase and decrease the counter using @click.' } ">
+                    <h3 x-text="code "></h3>
+                    <div x-data="{ count: 1 } ">
+                        <h2 x-text="count ">
+                        </h2>
+                        <button @click="count++ ">Count Up</button>
+                        <button @click="count-- ">Count Down</button>
+                    </div>
                 </div>
             </div>
 
-            <div x-data="{ title: '3.Adding a count down timer' }">
-                <h2 x-text="title"></h2>
-                <div x-data="{ countdown: 60 }" x-init="setInterval(function(){
-               countdown--;
-            }, 1000);
-            ">
-                    <h1 x-text="countdown"></h1>
+            <div x-data="{ title: '3.Adding a count down timer' } ">
+                <h2 x-text="title "></h2>
+                <div x-data="{ code: 'A timer countdown component where we add a simple setInterval inside the x-init directive to count down our timer.' } ">
+                    <h3 x-text="code "></h3>
+                    <div x-data="{ countdown: 60 } " x-init="setInterval(function(){ countdown--; }, 1000); ">
+                        <h2 x-text="countdown"></h2>
+                        <button @click="countdown=60 ">Restart</button>
+                        <button @click="countdown=countdown.stop ">Stop</button>
+
+                    </div>
                 </div>
             </div>
 
-            <div x-data="{ title: '4.Show and hide element' }">
+            <div x-data="{ title: '4.Show and hide element' } ">
+                <h2 x-text="title "></h2>
+                <div x-data="{ code: 'A button that will toggle the visibility of another element, Click the show button to toggle the display.' } ">
+                    <h3 x-text="code"></h3>
+                    <div x-data="{ show: false } ">
+                        <button @click="show=!show ">Show</button>
+                        <div x-show="show ">Hello</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-2-sm page center">
+            <div x-data="{ title: '5.Binding a varible' } ">
                 <h2 x-text="title"></h2>
-                <div x-data="{ show: false }">
-                    <button @click="show=!show">Show</button>
-                    <div x-show="show">Hello</div>
+                <div x-data="{ code: 'Whenever you update the value of the variable or the text box's value, they will stay in sync.' }">
+                    <h3 x-text="code"></h3>
+
+                    <div x-data="{ title: 'AlpineJS is Awesome ' }">
+                        <p x-text="title"></p>
+                        <input type="text" x-model="title">
+                    </div>
                 </div>
             </div>
 
-            <div x-data="{ title: '5.Binding a varible' }">
+            <div x-data="{ title: '6.Adding a Dynamic HTML ' }">
                 <h2 x-text="title"></h2>
-                <div x-data="{ title: 'AlpineJS is Awesome' }">
-                    <p x-text="title"></p>
-                    <input type="text" x-model="title">
-                </div>
-            </div>
-
-            <div x-data="{ title: '6.Adding a Dynamic HTML' }">
-                <h2 x-text="title"></h2>
-                <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
-                    <div x-html="code"></div>
+                <div x-data="{ code: 'The x-html directive, we can add some dynamic HTML inside any element. ' }">
+                    <h3 x-text="code"></h3>
+                    <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
+                        <div x-html="code"></div>
+                    </div>
                 </div>
             </div>
 
             <div x-data="{ title: '7.Using x-ref directive' }">
                 <h2 x-text="title"></h2>
-                <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
-                    <div x-ref="sentence">I am a sentence</div>
-                    <button @click="$refs.sentence.innerText = 'I just changed'">Change Sentence</button>
+                <div x-data="{ code: 'The x-ref directive will allow us to reference any element with a specified name.' }">
+                    <h3 x-text="code"></h3>
+                    <div x-data="{ code: '<p>Dynamic Paragraph</p>' }">
+                        <div x-ref="sentence">I am a sentence</div>
+                        <button @click="$refs.sentence.innerText = 'I just changed'">Change Sentence</button>
+                    </div>
                 </div>
             </div>
 
+
             <div x-data="{ title: '8.Using x-if directive' }">
                 <h2 x-text="title"></h2>
-                <div x-data="{ socks: 'blue' }">
-                    <template x-if="socks=='blue'">
+                <div x-data="{ code: 'Show or hide elements based on a conditional by using the x-if directive' }">
+                    <h3 x-text="code"></h3>
+                    <div x-data="{ socks: 'blue' }">
+                        <template x-if="socks=='blue'">
             <p>My socks are blue</p>
         </template>
-                    <template x-if="socks=='green'">
+                        <template x-if="socks=='green'">
             <p>My socks are green</p>
         </template>
-                    <button @click="socks = 'green'">Change Sox</button>
+                        <button @click="socks = 'green'">Change Socks</button>
+                    </div>
                 </div>
             </div>
 
             <div x-data="{ title: '9.Using x-for directive' }">
                 <h2 x-text="title"></h2>
-                <div x-data="{ groceries: ['Milk', 'Eggs', 'Cheese'] }">
-                    <p>Groceries</p>
-                    <ul>
-                        <template x-for="item in groceries">
+                <div x-data="{ code: 'To loop through an array of items inside of our Alpine component we can use the x-for directive.' }">
+                    <h3 x-text="code"></h3>
+                    <div x-data="{ groceries: ['Milk', 'Eggs', 'Cheese'] }">
+                        <p>Groceries</p>
+                        <ul>
+                            <template x-for="item in groceries">
                 <li x-text="item"></li>
             </template>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </table>
+        </div>
     </div>
 
 
