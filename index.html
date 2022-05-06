@@ -37,7 +37,7 @@
                 <div x-data="{ code: 'A button that will increase and decrease the counter using @click.' } ">
                     <h3 x-text="code "></h3>
                     <div x-data="{ count: 1 } ">
-                        <h2 x-text="count ">
+                        <h2 x-text="count">
                         </h2>
                         <button @click="count++ ">Count Up</button>
                         <button @click="count-- ">Count Down</button>
@@ -49,10 +49,14 @@
                 <h2 x-text="title "></h2>
                 <div x-data="{ code: 'A timer countdown component where we add a simple setInterval inside the x-init directive to count down our timer.' } ">
                     <h3 x-text="code "></h3>
-                    <div x-data="{ countdown: 60 } " x-init="setInterval(function(){ countdown--; }, 1000); ">
+                    <div x-data="{ countdown: 60 }" x-init="setInterval(function(){ 
+                        if(countdown > 0){
+                        countdown--; 
+                    }
+                    }, 1000); ">
                         <h2 x-text="countdown"></h2>
-                        <button @click="countdown=60 ">Restart</button>
-                        <button @click="countdown=countdown.stop ">Stop</button>
+                        <button @click="countdown=countdown.stop">Stop</button>
+                        <button @click="countdown=60">Restart</button>
 
                     </div>
                 </div>
