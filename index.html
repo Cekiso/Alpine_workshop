@@ -49,14 +49,16 @@
                 <h2 x-text="title "></h2>
                 <div x-data="{ code: 'A timer countdown component where we add a simple setInterval inside the x-init directive to count down our timer.' } ">
                     <h3 x-text="code "></h3>
-                    <div x-data="{ countdown: 60 }" x-init="setInterval(function(){ 
-                        if(countdown > 0){
-                        countdown--; 
-                    }
+                    <div x-data="{ countdown: 60 }" x-init="timer=setInterval(function(){ 
+                    countdown--;
                     }, 1000); ">
                         <h2 x-text="countdown"></h2>
-                        <button @click="countdown=countdown.stop">Stop</button>
+                        <button @click="clearInterval(timer); timer= null">Stop</button>
                         <button @click="countdown=60">Restart</button>
+                        <button @click="timer=setInterval(function(){
+                            countdown--
+                        },1000)">start</button>
+
 
                     </div>
                 </div>
@@ -68,7 +70,7 @@
                     <h3 x-text="code"></h3>
                     <div x-data="{ show: false } ">
                         <button @click="show=!show ">Show</button>
-                        <div x-show="show ">Hello</div>
+                        <div x-show.transition="show">Hello</div>
                     </div>
                 </div>
             </div>
